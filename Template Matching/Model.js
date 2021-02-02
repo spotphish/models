@@ -59,6 +59,6 @@ export default class TemplateMatching {
     }
 }
 TemplateMatching.dependencies = [
-    ROOT_DIR + "/models/Template Matching/jsfeat.js",
-    ROOT_DIR + "/models/Template Matching/orb-features.js"
+    ROOT_DIR + "/Template Matching/jsfeat.js",
+    ROOT_DIR + "/Template Matching/orb-features.js"
 ]

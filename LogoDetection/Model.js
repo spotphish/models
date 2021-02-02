@@ -36,7 +36,7 @@ export default class LogoDetection {
         this.count = 0;
         this.width = 400;
         this.height = 400;
-        this.graph_model_url = ROOT_DIR + "/models/LogoDetection/model/model.json";
+        this.graph_model_url = ROOT_DIR + "/LogoDetection/model/model.json";
         this.model = await tf.loadGraphModel(this.graph_model_url)
 
 

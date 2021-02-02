@@ -1,14 +1,12 @@
 {
   "name": "default-feed",
-  "url": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
+  "url": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
   "schema": "1.0",
   "version": "20171211104288",
-  "sites": [
-    {
+  "sites": [{
       "name": "Facebook",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "protected": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "protected": [{
           "url": "https://www.facebook.com/",
           "login_check": {
             "password": 2
@@ -30,8 +28,7 @@
           "url": "https://www.facebook.com/login/identify"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "Facebook",
           "image": "https://spotphish.github.io/feeds/main/images/fb-logo_lnx.png",
           "checksum": "d4a727986420faac68c45aeff948f182968788047f3c9e2cefaa4231033a3b9e"
@@ -52,17 +49,14 @@
           "checksum": "acd7264b6a68613e7f3712a0d7b1b6527464c2c4c9aae864104c6ba34b460819"
         }
       ],
-      "safe": [
-        {
-          "domain": "facebook.com"
-        }
-      ]
+      "safe": [{
+        "domain": "facebook.com"
+      }]
     },
     {
       "name": "Paypal",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "protected": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "protected": [{
           "url": "https://www.paypal.com/in/home"
         },
         {
@@ -81,8 +75,7 @@
           "url": "https://www.paypal.com/signin/authorize"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "Paypal",
           "image": "https://spotphish.github.io/feeds/main/images/paypal-linux.png",
           "checksum": "488377a4467f60e279e93fce31063091076d414da10f8145610210599b02ceee"
@@ -101,9 +94,8 @@
     },
     {
       "name": "Google",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "protected": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "protected": [{
           "url": "https://accounts.google.com/signin/v2/identifier"
         },
         {
@@ -113,8 +105,7 @@
           "url": "https://accounts.google.com/signin/v2/sl/pwd"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "Google 2016",
           "image": "https://spotphish.github.io/feeds/main/images/google-old.png",
           "checksum": "eae2d41d1d199d57ee6515953a143596572f425cb8217cd4912165d535686a9d"
@@ -141,8 +132,7 @@
           "checksum": "324740ee47fbe4c8592ba1e05ab5cd8d667cad6c2e99382a491c6de61d0646d2"
         }
       ],
-      "safe": [
-        {
+      "safe": [{
           "domain": "google.com"
         },
         {
@@ -152,9 +142,8 @@
     },
     {
       "name": "Amazon",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "protected": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "protected": [{
           "url": "https://www.amazon.in/ap/signin"
         },
         {
@@ -206,8 +195,7 @@
           "url": "https://portal.aws.amazon.com/billing/signup"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "Amazon",
           "image": "https://spotphish.github.io/feeds/main/images/amazon-logo.png",
           "checksum": "36f9b0d596baeb86de96d280d8aea07823cbc721a061ed50175787be44a5d408"
@@ -228,25 +216,21 @@
           "checksum": "b8055ca0bf86923bab179708a562badd5c51ba313f085d50cce1634719adbd2f"
         }
       ],
-      "safe": [
-        {
-          "domain": "www.amazonbusiness.in"
-        }
-      ]
+      "safe": [{
+        "domain": "www.amazonbusiness.in"
+      }]
     },
     {
       "name": "Dropbox",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "protected": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "protected": [{
           "url": "https://www.dropbox.com/"
         },
         {
           "url": "https://www.dropbox.com/business"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "Dropbox-1",
           "image": "https://spotphish.github.io/feeds/main/images/db1.png",
           "checksum": "b7b6705da70a8cc7c731b040afcffa1bd929c7a578d00b9448b3954302be1e13"
@@ -277,23 +261,18 @@
     },
     {
       "name": "wikipedia",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "safe": [
-        {
-          "domain": "wikipedia.org"
-        }
-      ]
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "safe": [{
+        "domain": "wikipedia.org"
+      }]
     },
     {
       "name": "HDFCBank",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "safe": [
-        {
-          "domain": "hdfcbank.com"
-        }
-      ],
-      "protected": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "safe": [{
+        "domain": "hdfcbank.com"
+      }],
+      "protected": [{
           "url": "https://www.hdfcbank.com/"
         },
         {
@@ -324,8 +303,7 @@
           "url": "https://fastag.hdfcbank.com/RetailRoadUserLogin/Index"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "HDFC Bank",
           "image": "https://vijay-coriolis.github.io/images/HDFC.png",
           "checksum": "f66670f8a5bfa6c43636d2649e39953d8ec9f4917f54cb8c110f256ae2d851e6"
@@ -349,17 +327,15 @@
     },
     {
       "name": "UnionBank",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "safe": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "safe": [{
           "domain": "unionbankofindia.co.in"
         },
         {
           "domain": "unionbankonline.co.in"
         }
       ],
-      "protected": [
-        {
+      "protected": [{
           "url": "https://www.unionbankofindia.co.in/english/home.aspx"
         },
         {
@@ -384,8 +360,7 @@
           "url": "https://www.unionbankonline.co.in/Corp_Phishing.html"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "Union Bank",
           "image": "https://vijay-coriolis.github.io/images/union.png",
           "checksum": "2256f217905c5bb8d6cc3a09fe732e6cf43611b38b144caa8a09b0b55491db90"
@@ -472,14 +447,11 @@
     },
     {
       "name": "ICICIBank",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "safe": [
-        {
-          "domain": "icicibank.com"
-        }
-      ],
-      "protected": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "safe": [{
+        "domain": "icicibank.com"
+      }],
+      "protected": [{
           "url": "https://www.icicibank.com/"
         },
         {
@@ -495,8 +467,7 @@
           "url": "https://www.icicibank.com/online-services/generate-password-personal.page"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "ICICI Bank",
           "image": "https://vijay-coriolis.github.io/images/ICICI.png",
           "checksum": "db50407e2e3d68c6efab3639e96bbaeabf8010354d87e67be24bf251abd09364"
@@ -515,9 +486,8 @@
     },
     {
       "name": "SBI",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "safe": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "safe": [{
           "domain": "onlinesbi.com"
         },
         {
@@ -527,8 +497,7 @@
           "domain": "yonobusiness.sbi"
         }
       ],
-      "protected": [
-        {
+      "protected": [{
           "url": "https://onlinesbi.com/"
         },
         {
@@ -544,8 +513,7 @@
           "url": "https://scfu.onlinesbi.com/vfim/login.htm"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "SBI Bank",
           "image": "https://vijay-coriolis.github.io/images/SBI.png",
           "checksum": "2759a12caadf923aaa61463ee0b408d66e95ef1c0a8f0382b7c65d93b04a575b"
@@ -569,17 +537,15 @@
     },
     {
       "name": "IDBIBank",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "safe": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "safe": [{
           "domain": "idbibank.in"
         },
         {
           "domain": "idbibank.co.in"
         }
       ],
-      "protected": [
-        {
+      "protected": [{
           "url": "https://www.idbibank.in/index.asp"
         },
         {
@@ -598,27 +564,23 @@
           "url": "https://www.idbibank.in/customer-care-centre.asp"
         }
       ],
-      "templates": [
-        {
-          "name": "IDBI Bank",
-          "image": "https://vijay-coriolis.github.io/images/IDBI.png",
-          "checksum": "109948522c11bff6c6360caac5285303241d4a15b9944b7b07f90f5b10052d26"
-        }
-      ]
+      "templates": [{
+        "name": "IDBI Bank",
+        "image": "https://vijay-coriolis.github.io/images/IDBI.png",
+        "checksum": "109948522c11bff6c6360caac5285303241d4a15b9944b7b07f90f5b10052d26"
+      }]
     },
     {
       "name": "AxisBank",
-      "src": "https://cdn.jsdelivr.net/gh/spotphish/spotphish/models/Template Matching/main.json",
-      "safe": [
-        {
+      "src": "https://cdn.jsdelivr.net/gh/spotphish/models/main.json",
+      "safe": [{
           "domain": "axisbank.com"
         },
         {
           "domain": "axisbank.co.in"
         }
       ],
-      "protected": [
-        {
+      "protected": [{
           "url": "https://www.axisbank.com/"
         },
         {
@@ -640,8 +602,7 @@
           "url": "https://www.axisbank.com/bank-smart/internet-banking"
         }
       ],
-      "templates": [
-        {
+      "templates": [{
           "name": "Axis Bank",
           "image": "https://vijay-coriolis.github.io/images/AXIS.png",
           "checksum": "fa1021ec474f6fe4e7edb7893c71e3c4d165c0d84d4b0f35bf4642966a800b0d"
