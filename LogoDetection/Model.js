@@ -37,7 +37,6 @@ export default class LogoDetection {
         this.width = 400;
         this.height = 400;
         this.graph_model_url = ROOT_DIR + "/LogoDetection/model/model.json";
-        this.model = await tf.loadGraphModel(this.graph_model_url)
 
 
     }
@@ -93,6 +92,10 @@ export default class LogoDetection {
     }
 
     async predict(url) {
+
+
+        this.model = await tf.loadGraphModel(this.graph_model_url)
+
         console.log('I am inside tfJS');
         let image = await this.loadImage(url);
 
