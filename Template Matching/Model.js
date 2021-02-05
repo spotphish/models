@@ -46,7 +46,7 @@ export default class TemplateMatching {
             match.mask);
     }
     async predict(screenshot) {
-
+        console.log("latest version")
         let features = await findOrbFeatures(screenshot);
         let match = await this.matchTemplates(features, screenshot);
         let result = {
