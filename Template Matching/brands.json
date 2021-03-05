@@ -1,0 +1,57 @@
+[{
+    "name": "Facebook",
+    "image": "https://spotphish.github.io/feeds/main/images/Facebook2020.png"
+  },
+  {
+    "name": "Paypal",
+    "image": "https://spotphish.github.io/feeds/main/images/Paypal-new.png"
+
+  },
+  {
+    "name": "Google",
+    "image": "https://spotphish.github.io/feeds/main/images/Google.png"
+  },
+  {
+    "name": "Amazon",
+    "image": "https://spotphish.github.io/feeds/main/images/Amazon.png"
+
+
+  },
+  {
+    "name": "Dropbox",
+    "image": "https://spotphish.github.io/feeds/main/images/Dropbox-new.png"
+
+
+  },
+
+  {
+    "name": "HDFCBank",
+    "image": "https://spotphish.github.io/feeds/main/images/HDFC.png"
+
+
+  },
+  {
+    "name": "UnionBank",
+    "image": "https://spotphish.github.io/feeds/main/images/union.png"
+
+
+  },
+  {
+    "name": "ICICIBank",
+    "image": "https://spotphish.github.io/feeds/main/images/ICICI.png"
+
+
+  },
+  {
+    "name": "SBI",
+    "image": "https://spotphish.github.io/feeds/main/images/SBI.png"
+  },
+  {
+    "name": "IDBIBank",
+    "image": "https://spotphish.github.io/feeds/main/images/IDBI.png"
+  },
+  {
+    "name": "AxisBank",
+    "image": "https://spotphish.github.io/feeds/main/images/AXIS.png"
+  }
+]
