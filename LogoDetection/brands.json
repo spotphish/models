@@ -1,9 +1,154 @@
 [{
-    "name": "amazon",
-    "image": "https://spotphish.github.io/feeds/main/images/Amazon.png"
+    "name": "Amazon",
+    "image": "https://spotphish.github.io/logo_images/Amazon.png"
   },
   {
+    "name": "Axis Bank",
+    "image": "https://spotphish.github.io/logo_images/Axis Bank.png"
+  }, {
+    "name": "BSE",
+    "image": "https://spotphish.github.io/logo_images/BSE.png"
+  }, {
+    "name": "Bandhan Bank",
+    "image": "https://spotphish.github.io/logo_images/Bandhan Bank.jpg"
+  }, {
+    "name": "Bank of Baroda",
+    "image": "https://spotphish.github.io/logo_images/Bank Of Baroda.jpg"
+  }, {
+    "name": "Bank of India",
+    "image": "https://spotphish.github.io/logo_images/Bank of India.jpg"
+  }, {
+    "name": "Bank of Maharashtra",
+    "image": "https://spotphish.github.io/logo_images/Bank of Maharashtra.png"
+  }, {
+    "name": "Big Basket",
+    "image": "https://spotphish.github.io/logo_images/Big Basket.png"
+  }, {
+    "name": "CDSL",
+    "image": "https://spotphish.github.io/logo_images/CDSL.png"
+  }, {
+    "name": "Canara Bank",
+    "image": "https://spotphish.github.io/logo_images/Canara Bank.jpg"
+  }, {
+    "name": "Central Bank of India",
+    "image": "https://spotphish.github.io/logo_images/Central Bank of India.jpg"
+  }, {
+    "name": "Citi Bank",
+    "image": "https://spotphish.github.io/logo_images/Citi Bank.png"
+  }, {
+    "name": "Dropbox",
+    "image": "https://spotphish.github.io/logo_images/Dropbox.png"
+  }, {
     "name": "Facebook",
-    "image": "https://spotphish.github.io/feeds/main/images/Facebook2020.png"
+    "image": "https://spotphish.github.io/logo_images/Facebook.jpg"
+  }, {
+    "name": "Federal Bank",
+    "image": "https://spotphish.github.io/logo_images/Federal Bank.jpg"
+  }, {
+    "name": "Flipkart",
+    "image": "https://spotphish.github.io/logo_images/Flipkart.png"
+  }, {
+    "name": "Google",
+    "image": "https://spotphish.github.io/logo_images/Google.png"
+  }, {
+    "name": "Groww",
+    "image": "https://spotphish.github.io/logo_images/Groww.png"
+  }, {
+    "name": "HDFC Bank",
+    "image": "https://spotphish.github.io/logo_images/HDFC Bank.jpg"
+  }, {
+    "name": "HSBC",
+    "image": "https://spotphish.github.io/logo_images/HSBC.png"
+  }, {
+    "name": "ICICI Bank",
+    "image": "https://spotphish.github.io/logo_images/ICICI Bank.jpg"
+  }, {
+    "name": "IDBI Bank",
+    "image": "https://spotphish.github.io/logo_images/IDBI Bank.png"
+  }, {
+    "name": "IDFC",
+    "image": "https://spotphish.github.io/logo_images/IDFC.png"
+  }, {
+    "name": "IKEA",
+    "image": "https://spotphish.github.io/logo_images/IKEA.png"
+  }, {
+    "name": "IncomeTax",
+    "image": "https://spotphish.github.io/logo_images/IncomeTax.png"
+  }, {
+    "name": "Indian Bank",
+    "image": "https://spotphish.github.io/logo_images/Indian Bank.jpg"
+  }, {
+    "name": "Indian Overseas Bank",
+    "image": "https://spotphish.github.io/logo_images/Indian Overseas Bank.jpg"
+  }, {
+    "name": "IndusInd Bank",
+    "image": "https://spotphish.github.io/logo_images/IndusInd Bank.jpg"
+  }, {
+    "name": "Instagram",
+    "image": "https://spotphish.github.io/logo_images/Instagram.png"
+  }, {
+    "name": "Kotak Bank",
+    "image": "https://spotphish.github.io/logo_images/Kotak Bank.jpg"
+  }, {
+    "name": "LinkedIn",
+    "image": "https://spotphish.github.io/logo_images/Linkedin.png"
+  }, {
+    "name": "NSDL",
+    "image": "https://spotphish.github.io/logo_images/NSDL.png"
+  }, {
+    "name": "OLA",
+    "image": "https://spotphish.github.io/logo_images/OLA.png"
+  }, {
+    "name": "Paypal",
+    "image": "https://spotphish.github.io/logo_images/Paypal.jpg"
+  }, {
+    "name": "Paytm",
+    "image": "https://spotphish.github.io/logo_images/Paytm.png"
+  }, {
+    "name": "Pinterest",
+    "image": "https://spotphish.github.io/logo_images/Pinterest.png"
+  }, {
+    "name": "Punjab and Sind Bank",
+    "image": "https://spotphish.github.io/logo_images/Punjab And Sind Bank.jpg"
+  }, {
+    "name": "Punjab National Bank",
+    "image": "https://spotphish.github.io/logo_images/Punjab National Bank.jpg"
+  }, {
+    "name": "RBL Bank",
+    "image": "https://spotphish.github.io/logo_images/RBL Bank.jpg"
+  }, {
+    "name": "State Bank of India",
+    "image": "https://spotphish.github.io/logo_images/State Bank of India.png"
+  }, {
+    "name": "Swiggy",
+    "image": "https://spotphish.github.io/logo_images/Swiggy.png"
+  }, {
+    "name": "Twitter",
+    "image": "https://spotphish.github.io/logo_images/Twitter.png"
+  }, {
+    "name": "UCO Bank",
+    "image": "https://spotphish.github.io/logo_images/UCO Bank.png"
+  }, {
+    "name": "Uber",
+    "image": "https://spotphish.github.io/logo_images/Uber.png"
+  }, {
+    "name": "Union Bank of India",
+    "image": "https://spotphish.github.io/logo_images/Union Bank of India.png"
+  },
+  {
+    "name": "Upstox",
+    "image": "https://spotphish.github.io/logo_images/Upstox.png"
+  }, {
+    "name": "Whatsapp",
+    "image": "https://spotphish.github.io/logo_images/WhatsApp.png"
+  }, {
+    "name": "Yes Bank",
+    "image": "https://spotphish.github.io/logo_images/Yes Bnak.jpg"
+  }, {
+    "name": "Zerodha",
+    "image": "https://spotphish.github.io/logo_images/Zerodha.png"
+  }, {
+    "name": "Zomato",
+    "image": "https://spotphish.github.io/logo_images/Zomato.png"
   }
 ]

@@ -1,57 +1,66 @@
 [{
     "name": "Facebook",
-    "image": "https://spotphish.github.io/feeds/main/images/Facebook2020.png"
+    "image": "https://spotphish.github.io/logo_images/Facebook.jpg"
+
   },
   {
     "name": "Paypal",
-    "image": "https://spotphish.github.io/feeds/main/images/Paypal-new.png"
+    "image": "https://spotphish.github.io/logo_images/Paypal.jpg"
+
 
   },
   {
     "name": "Google",
-    "image": "https://spotphish.github.io/feeds/main/images/Google.png"
+    "image": "https://spotphish.github.io/logo_images/Google.png"
+
   },
   {
     "name": "Amazon",
-    "image": "https://spotphish.github.io/feeds/main/images/Amazon.png"
+    "image": "https://spotphish.github.io/logo_images/Amazon.png"
+
 
 
   },
   {
     "name": "Dropbox",
-    "image": "https://spotphish.github.io/feeds/main/images/Dropbox-new.png"
 
+    "image": "https://spotphish.github.io/logo_images/Dropbox.png"
 
   },
 
   {
-    "name": "HDFCBank",
-    "image": "https://spotphish.github.io/feeds/main/images/HDFC.png"
+    "name": "HDFC Bank",
+    "image": "https://spotphish.github.io/logo_images/HDFC Bank.jpg"
 
-
-  },
-  {
-    "name": "UnionBank",
-    "image": "https://spotphish.github.io/feeds/main/images/union.png"
 
 
   },
   {
-    "name": "ICICIBank",
-    "image": "https://spotphish.github.io/feeds/main/images/ICICI.png"
+    "name": "Union Bank of India",
+    "image": "https://spotphish.github.io/logo_images/Union Bank of India.png"
+
+
+  },
+  {
+    "name": "ICICI Bank",
+    "image": "https://spotphish.github.io/logo_images/ICICI Bank.jpg"
+
 
 
   },
   {
     "name": "SBI",
-    "image": "https://spotphish.github.io/feeds/main/images/SBI.png"
+    "image": "https://spotphish.github.io/logo_images/State Bank of India.png"
+
   },
   {
-    "name": "IDBIBank",
-    "image": "https://spotphish.github.io/feeds/main/images/IDBI.png"
+    "name": "IDBI Bank",
+    "image": "https://spotphish.github.io/logo_images/IDBI Bank.png"
+
   },
   {
-    "name": "AxisBank",
-    "image": "https://spotphish.github.io/feeds/main/images/AXIS.png"
+    "name": "Axis Bank",
+    "image": "https://spotphish.github.io/logo_images/Axis Bank.png"
+
   }
 ]
