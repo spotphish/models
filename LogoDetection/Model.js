@@ -40,7 +40,7 @@ export default class LogoDetection {
 
 
     }
-    saveModel() {
+    async saveModel() {
         let x = tf.loadGraphModel(ROOT_DIR + "/LogoDetection/model/model.json");
         await x.save("indexeddb://LogoDetection")
     }
