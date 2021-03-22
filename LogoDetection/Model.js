@@ -41,8 +41,10 @@ export default class LogoDetection {
 
     }
     async saveModel() {
-        let x = tf.loadGraphModel(ROOT_DIR + "/LogoDetection/model/model.json");
-        await x.save("indexeddb://LogoDetection")
+        let x = await tf.loadGraphModel(ROOT_DIR + "/LogoDetection/model/model.json");
+        console.log(x);
+        let z = await x.save("indexeddb://LogoDetection")
+        console.log(z);
     }
     drawCorrespondence(x_origin, y_origin, outputs, ans, image) {
         return new Promise((resolve, reject) => {
@@ -134,7 +136,7 @@ export default class LogoDetection {
 
             this.count = this.count + 1;
 
-            // console.log(pred_result);
+            console.log(pred_result);
 
             if (pred_result != null) {
                 return {
