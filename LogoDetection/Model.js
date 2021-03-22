@@ -36,11 +36,14 @@ export default class LogoDetection {
         this.count = 0;
         this.width = 400;
         this.height = 400;
-        this.graph_model_url = ROOT_DIR + "/LogoDetection/model/model.json";
+        this.graph_model_url = "indexeddb://LogoDetection";
 
 
     }
-
+    saveModel() {
+        let x = tf.loadGraphModel(ROOT_DIR + "/LogoDetection/model/model.json");
+        await x.save("indexeddb://LogoDetection")
+    }
     drawCorrespondence(x_origin, y_origin, outputs, ans, image) {
         return new Promise((resolve, reject) => {
             var canvas = document.createElement("canvas");
