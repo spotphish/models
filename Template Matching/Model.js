@@ -4,7 +4,11 @@ export default class TemplateMatching {
         const scrCorners = scrFeatures.corners;
         const scrDescriptors = scrFeatures.descriptors;
         let t0 = performance.now();
-        let activeTemplates = readDB()
+        let activeTemplates = await readDB()
+        if (!activeTemplates) {
+            activeTemplates = []
+        }
+        console.log(activeTemplates);
         let max = 0;
         let result = null;
         for (let i = 0; i < activeTemplates.length; i++) {

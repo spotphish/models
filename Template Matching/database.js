@@ -135,57 +135,61 @@ function writeDB(data) {
   }
 }
 
-function readDB() {
-  console.log("displayDB()");
-  let TEMPLATES = []
-  let db = dbGlobals.db;
-  let transaction;
-  if (!db) {
-    console.log("db (i.e., dbGlobals.db) is null in displayDB()");
-    return TEMPLATES;
-  } // if
-
-  try {
-    transaction = db.transaction(dbGlobals.storeName, (IDBTransaction.READ_ONLY ? IDBTransaction.READ_ONLY : 'readonly')); // This is either successful or it throws an exception. Note that the ternary operator is for browsers that only support the READ_ONLY value.
-  } // try
-  catch (ex) {
-    console.log("db.transaction() exception in displayDB() - " + ex.message);
-    return TEMPLATES;
-  } // catch
-
-  try {
-    let objectStore = transaction.objectStore(dbGlobals.storeName);
+async function readDB() {
+  return new Promise((res, rej) => {
+    console.log("readDB()");
+    let TEMPLATES = []
+    let db = dbGlobals.db;
+    let transaction;
+    if (!db) {
+      console.log("db (i.e., dbGlobals.db) is null in displayDB()");
+      rej();
+    } // if
 
     try {
-      let cursorRequest = objectStore.openCursor();
+      transaction = db.transaction(dbGlobals.storeName, (IDBTransaction.READ_ONLY ? IDBTransaction.READ_ONLY : 'readonly')); // This is either successful or it throws an exception. Note that the ternary operator is for browsers that only support the READ_ONLY value.
+    } // try
+    catch (ex) {
+      console.log("db.transaction() exception in displayDB() - " + ex.message);
+      rej()
+    } // catch
 
-      cursorRequest.onerror = function (evt) {
-        console.log("cursorRequest.onerror fired in displayDB() - error code: " + (evt.target.error ? evt.target.error : evt.target.errorCode));
-      }
+    try {
+      let objectStore = transaction.objectStore(dbGlobals.storeName);
 
+      try {
+        let cursorRequest = objectStore.openCursor();
 
-      cursorRequest.onsuccess = function (evt) {
-        console.log("cursorRequest.onsuccess fired in displayDB()");
-
-        let cursor = evt.target.result; // Get an object from the object store.
-
-        if (cursor) {
-          console.log(cursor.value);
-          TEMPLATES.push(cursor.value)
-          cursor.continue(); // Move to the next object (that is, file) in the object store.
-        } else {
-          return TEMPLATES;
+        cursorRequest.onerror = function (evt) {
+          console.log("cursorRequest.onerror fired in displayDB() - error code: " + (evt.target.error ? evt.target.error : evt.target.errorCode));
+          rej();
         }
 
-      } // cursorRequest.onsuccess
-    } // inner try
-    catch (innerException) {
-      console.log("Inner try exception in displayDB() - " + innerException.message);
-    } // inner catch
-  } // outer try
-  catch (outerException) {
-    console.log("Outer try exception in displayDB() - " + outerException.message);
-  } // outer catch
+
+        cursorRequest.onsuccess = function (evt) {
+          console.log("cursorRequest.onsuccess fired in displayDB()");
+
+          let cursor = evt.target.result; // Get an object from the object store.
+
+          if (cursor) {
+            TEMPLATES.push(cursor.value)
+            cursor.continue(); // Move to the next object (that is, file) in the object store.
+          } else {
+            res(TEMPLATES);
+          }
+
+        } // cursorRequest.onsuccess
+      } // inner try
+      catch (innerException) {
+        console.log("Inner try exception in displayDB() - " + innerException.message);
+        rej()
+      } // inner catch
+    } // outer try
+    catch (outerException) {
+      console.log("Outer try exception in displayDB() - " + outerException.message);
+      rej();
+    }
+  });
 }
 
 function clearDB() {
@@ -195,18 +199,18 @@ function clearDB() {
     transaction = db.transaction(dbGlobals.storeName, (IDBTransaction.READ_WRITE ? IDBTransaction.READ_WRITE : 'readwrite')); // This is either successful or it throws an exception. Note that the ternary operator is for browsers that only support the READ_WRITE value.
   } // try
   catch (ex) {
-    console.log("db.transaction exception in handleFileSelection() - " + ex.message);
+    console.log("db.transaction exception in clearDB() - " + ex.message);
     return;
   } // catch
 
   transaction.onerror = function (evt) {
-    console.log("transaction.onerror fired in handleFileSelection() - error code: " + (evt.target.error ? evt.target.error : evt.target.errorCode));
+    console.log("transaction.onerror fired in clearDB() - error code: " + (evt.target.error ? evt.target.error : evt.target.errorCode));
   }
   transaction.onabort = function () {
-    console.log("transaction.onabort fired in handleFileSelection()");
+    console.log("transaction.onabort fired in clearDB()");
   }
   transaction.oncomplete = function () {
-    console.log("transaction.oncomplete fired in handleFileSelection()");
+    console.log("transaction.oncomplete fired in clearDB()");
     // displayDB()
   }
 
@@ -217,13 +221,9 @@ function clearDB() {
     objectStoreRequest.onsuccess = function (event) {
       console.log("object store cleared");
     };
-
-
-    // for
   } // try
   catch (ex) {
-    console.log("Transaction and/or put() exception in handleFileSelection() - " + ex.message);
+    console.log("Transaction and/or put() exception in clearDB() - " + ex.message);
     return;
   }
-
 };
