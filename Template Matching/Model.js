@@ -4,7 +4,7 @@ export default class TemplateMatching {
         const scrCorners = scrFeatures.corners;
         const scrDescriptors = scrFeatures.descriptors;
         let t0 = performance.now();
-        let activeTemplates = localStorage.getItem("templates");
+        let activeTemplates = readDB()
         let max = 0;
         let result = null;
         for (let i = 0; i < activeTemplates.length; i++) {
@@ -46,7 +46,8 @@ export default class TemplateMatching {
             match.mask);
     }
     async saveModel() {
-        localStorage.removeItem("templates")
+        openDB()
+
         fetch(ROOT_DIR + "/Template Matching/model/templates.json")
             .then(res => res.json())
             .then(async sites => {
@@ -59,17 +60,7 @@ export default class TemplateMatching {
                             site: site.name
                         }
                         console.log(template);
-                        let templates = localStorage.getItem("templates")
-
-                        if (!templates) {
-                            templates = [];
-                        } else {
-                            templates = JSON.parse(templates)
-
-                        }
-                        console.log(templates);
-                        templates.push(template)
-                        localStorage.setItem("templates", JSON.stringify(templates))
+                        writeDB(template)
                     }
 
                 }
@@ -92,5 +83,7 @@ export default class TemplateMatching {
 }
 TemplateMatching.dependencies = [
     ROOT_DIR + "/Template Matching/jsfeat.js",
-    ROOT_DIR + "/Template Matching/orb-features.js"
+    ROOT_DIR + "/Template Matching/orb-features.js",
+    ROOT_DIR + "/Template Matching/database.js"
+
 ]
