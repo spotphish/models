@@ -4,7 +4,7 @@ export default class TemplateMatching {
         const scrCorners = scrFeatures.corners;
         const scrDescriptors = scrFeatures.descriptors;
         let t0 = performance.now();
-        let activeTemplates = Sites.getTemplates();
+        let activeTemplates = localStorage.getItem("templates");
         let max = 0;
         let result = null;
         for (let i = 0; i < activeTemplates.length; i++) {
@@ -45,6 +45,33 @@ export default class TemplateMatching {
         return findCorrespondence(screenshot, features.corners, match.template, match.matches, match.matchCount,
             match.mask);
     }
+    async saveModel() {
+        fetch(ROOT_DIR + "/Template Matching/model/templates.json")
+            .then(res => res.json())
+            .then(async sites => {
+                for (let site of sites) {
+                    for (let template of site.templates) {
+                        let x = await createPatterns(template.image)
+                        template = {
+                            ...template,
+                            ...x,
+                            site: site.name
+                        }
+                        console.log(template);
+                        let templates = localStorage.getItem("templates")
+
+                        if (!templates) {
+                            templates = [];
+                        }
+                        console.log(templates);
+                        templates.push(template)
+                        localStorage.setItem("templates", templates)
+                    }
+
+                }
+
+            })
+    }
     async predict(screenshot) {
         console.log("latest version")
         let features = await findOrbFeatures(screenshot);
@@ -57,6 +84,7 @@ export default class TemplateMatching {
         }
         return result;
     }
+
 }
 TemplateMatching.dependencies = [
     ROOT_DIR + "/Template Matching/jsfeat.js",
