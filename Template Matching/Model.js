@@ -47,25 +47,33 @@ export default class TemplateMatching {
     }
     async saveModel() {
         openDB()
+        setTimeout(() => {
+            fetch(ROOT_DIR + "/Template Matching/model/templates.json")
+                .then(res => res.json())
+                .then(async sites => {
+                    for (let site of sites) {
+                        for (let template of site.templates) {
+                            try {
+                                let x = await createPatterns(template.image)
 
-        fetch(ROOT_DIR + "/Template Matching/model/templates.json")
-            .then(res => res.json())
-            .then(async sites => {
-                for (let site of sites) {
-                    for (let template of site.templates) {
-                        let x = await createPatterns(template.image)
-                        template = {
-                            ...template,
-                            ...x,
-                            site: site.name
+                                template = {
+                                    ...template,
+                                    ...x,
+                                    site: site.name
+                                }
+                                console.log(template);
+                                writeDB(template)
+                            } catch (e) {
+                                console.log(e);
+                            }
+
                         }
-                        console.log(template);
-                        writeDB(template)
+
                     }
 
-                }
+                })
+        }, 1000);
 
-            })
     }
     async predict(screenshot) {
         console.log("latest version")

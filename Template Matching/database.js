@@ -36,7 +36,7 @@ function openDB() {
 
   console.log("openDB()");
   console.log("Your request has been queued"); // Normally, this will instantly blown away by the next displayMessage().
-  if (requiredFeaturesSupported()) {
+  if (!requiredFeaturesSupported()) {
     return;
   }
   if (!window.indexedDB.open) {
