@@ -63,10 +63,13 @@ export default class TemplateMatching {
 
                         if (!templates) {
                             templates = [];
+                        } else {
+                            templates = JSON.parse(templates)
+
                         }
                         console.log(templates);
                         templates.push(template)
-                        localStorage.setItem("templates", templates)
+                        localStorage.setItem("templates", JSON.stringify(templates))
                     }
 
                 }
