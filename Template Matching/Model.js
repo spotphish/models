@@ -46,6 +46,7 @@ export default class TemplateMatching {
             match.mask);
     }
     async saveModel() {
+        localStorage.removeItem("templates")
         fetch(ROOT_DIR + "/Template Matching/model/templates.json")
             .then(res => res.json())
             .then(async sites => {
