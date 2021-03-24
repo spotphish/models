@@ -36,16 +36,8 @@ export default class LogoDetection {
         this.count = 0;
         this.width = 400;
         this.height = 400;
-        this.graph_model_url = "indexeddb://LogoDetection";
-
-
     }
-    async saveModel() {
-        let x = await tf.loadGraphModel(ROOT_DIR + "/LogoDetection/model/model.json");
-        console.log(x);
-        let z = await x.save("indexeddb://LogoDetection")
-        console.log(z);
-    }
+
     drawCorrespondence(x_origin, y_origin, outputs, ans, image) {
         return new Promise((resolve, reject) => {
             var canvas = document.createElement("canvas");
@@ -96,10 +88,8 @@ export default class LogoDetection {
         });
     }
 
-    async predict(url) {
-
-
-        this.model = await tf.loadGraphModel(this.graph_model_url)
+    async predict(url, graph_model_url) {
+        this.model = await tf.loadGraphModel(graph_model_url)
 
         console.log('I am inside tfJS');
         let image = await this.loadImage(url);
@@ -308,3 +298,4 @@ export default class LogoDetection {
 LogoDetection.dependencies = [
     "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js",
 ]
+LogoDetection.model = ROOT_DIR + "/LogoDetection/model/model.json"

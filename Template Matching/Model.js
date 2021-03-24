@@ -4,11 +4,8 @@ export default class TemplateMatching {
         const scrCorners = scrFeatures.corners;
         const scrDescriptors = scrFeatures.descriptors;
         let t0 = performance.now();
-        let activeTemplates = await readDB()
-        if (!activeTemplates) {
-            activeTemplates = []
-        }
-        console.log(activeTemplates);
+        let activeTemplates = Sites.getTemplates()
+
         let max = 0;
         let result = null;
         for (let i = 0; i < activeTemplates.length; i++) {
@@ -49,36 +46,7 @@ export default class TemplateMatching {
         return findCorrespondence(screenshot, features.corners, match.template, match.matches, match.matchCount,
             match.mask);
     }
-    async saveModel() {
-        openDB()
-        setTimeout(() => {
-            fetch(ROOT_DIR + "/Template Matching/model/templates.json")
-                .then(res => res.json())
-                .then(async sites => {
-                    for (let site of sites) {
-                        for (let template of site.templates) {
-                            try {
-                                let x = await createPatterns(template.image)
 
-                                template = {
-                                    ...template,
-                                    ...x,
-                                    site: site.name
-                                }
-                                console.log(template);
-                                writeDB(template)
-                            } catch (e) {
-                                console.log(e);
-                            }
-
-                        }
-
-                    }
-
-                })
-        }, 1000);
-
-    }
     async predict(screenshot) {
         console.log("latest version")
         let features = await findOrbFeatures(screenshot);
@@ -96,6 +64,4 @@ export default class TemplateMatching {
 TemplateMatching.dependencies = [
     ROOT_DIR + "/Template Matching/jsfeat.js",
     ROOT_DIR + "/Template Matching/orb-features.js",
-    ROOT_DIR + "/Template Matching/database.js"
-
 ]
