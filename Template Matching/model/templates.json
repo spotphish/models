@@ -106,11 +106,6 @@
     "name": "Dropbox",
 
     "templates": [{
-        "name": "Dropbox-1",
-        "image": "https://spotphish.github.io/feeds/main/images/db1.png",
-        "checksum": "b7b6705da70a8cc7c731b040afcffa1bd929c7a578d00b9448b3954302be1e13"
-      },
-      {
         "name": "Dropbox-2",
         "image": "https://spotphish.github.io/feeds/main/images/db2.png",
         "checksum": "6e2d61093405ac6c252fcb7d195867e093707ebf07f09f5ba11cbdf125d4687d"
