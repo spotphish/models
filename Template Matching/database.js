@@ -28,7 +28,7 @@ function requiredFeaturesSupported() {
 function openDB() {
   // dbGlobals.db = null; // The database object will eventually be stored here.
   dbGlobals.name = "TemplateMatching"; // The name of the database.
-  dbGlobals.version = 2; // Must be >= 1. Be aware that a database of a given name may only have one version at a time, on the client machine.
+  dbGlobals.version = 3; // Must be >= 1. Be aware that a database of a given name may only have one version at a time, on the client machine.
   dbGlobals.storeName = "templates"; // The name of the database's object store. Each object in the object store is a file object.
 
   if (dbGlobals.db) {
