@@ -71,8 +71,7 @@ function openDB_onupgradeneeded(evt) {
 
   try {
     db.createObjectStore(dbGlobals.storeName, {
-      keyPath: "ID",
-      autoIncrement: true
+      keyPath: "checksum",
     }); // Create the object store such that each object in the store will be given an "ID" property that is auto-incremented monotonically. Thus, files of the same name can be stored in the database.
   } catch (ex) {
     console.log("Exception in openDB_onupgradeneeded() - " + ex.message);
