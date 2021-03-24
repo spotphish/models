@@ -4,10 +4,18 @@ var promiseTimeout = 5000; //in ms
 var blurSize = 5;
 var match_t = (function () {
     function match_t(screen_idx, pattern_lev, pattern_idx, distance) {
-        if (typeof screen_idx === "undefined") { screen_idx=0; }
-        if (typeof pattern_lev === "undefined") { pattern_lev=0; }
-        if (typeof pattern_idx === "undefined") { pattern_idx=0; }
-        if (typeof distance === "undefined") { distance=0; }
+        if (typeof screen_idx === "undefined") {
+            screen_idx = 0;
+        }
+        if (typeof pattern_lev === "undefined") {
+            pattern_lev = 0;
+        }
+        if (typeof pattern_idx === "undefined") {
+            pattern_idx = 0;
+        }
+        if (typeof distance === "undefined") {
+            distance = 0;
+        }
 
         this.screen_idx = screen_idx;
         this.pattern_lev = pattern_lev;
@@ -23,7 +31,9 @@ function detect_keypoints(img, corners, max_allowed) {
 
     // sort by score and reduce the count if needed
     if (count > max_allowed) {
-        jsfeat.math.qsort(corners, 0, count-1, function(a,b){return (b.score<a.score);});
+        jsfeat.math.qsort(corners, 0, count - 1, function (a, b) {
+            return (b.score < a.score);
+        });
         count = max_allowed;
     }
 
@@ -36,17 +46,25 @@ function detect_keypoints(img, corners, max_allowed) {
 }
 
 // central difference using image moments to find dominant orientation
-var u_max = new Int32Array([15,15,15,15,14,14,14,13,13,12,11,10,9,8,6,3,0]);
+var u_max = new Int32Array([15, 15, 15, 15, 14, 14, 14, 13, 13, 12, 11, 10, 9, 8, 6, 3, 0]);
+
 function ic_angle(img, px, py) {
     var half_k = 15; // half patch size
-    var m_01 = 0, m_10 = 0;
-    var src=img.data, step=img.cols;
-    var u=0, v=0, center_off=(py*step + px)|0;
-    var v_sum=0,d=0,val_plus=0,val_minus=0;
+    var m_01 = 0,
+        m_10 = 0;
+    var src = img.data,
+        step = img.cols;
+    var u = 0,
+        v = 0,
+        center_off = (py * step + px) | 0;
+    var v_sum = 0,
+        d = 0,
+        val_plus = 0,
+        val_minus = 0;
 
     // Treat the center line differently, v=0
     for (u = -half_k; u <= half_k; ++u)
-        m_10 += u * src[center_off+u];
+        m_10 += u * src[center_off + u];
 
     // Go line by line in the circular patch
     for (v = 1; v <= half_k; ++v) {
@@ -54,8 +72,8 @@ function ic_angle(img, px, py) {
         v_sum = 0;
         d = u_max[v];
         for (u = -d; u <= d; ++u) {
-            val_plus = src[center_off+u+v*step];
-            val_minus = src[center_off+u-v*step];
+            val_plus = src[center_off + u + v * step];
+            val_minus = src[center_off + u - v * step];
             v_sum += (val_plus - val_minus);
             m_10 += u * (val_plus + val_minus);
         }
@@ -69,7 +87,7 @@ function ic_angle(img, px, py) {
 function popcnt32(n) {
     n -= ((n >> 1) & 0x55555555);
     n = (n & 0x33333333) + ((n >> 2) & 0x33333333);
-    return (((n + (n >> 4))& 0xF0F0F0F)* 0x1010101) >> 24;
+    return (((n + (n >> 4)) & 0xF0F0F0F) * 0x1010101) >> 24;
 }
 
 function match_pattern(scrShot_descriptors, patternDescriptors, matches) {
@@ -78,7 +96,10 @@ function match_pattern(scrShot_descriptors, patternDescriptors, matches) {
     //var query_du8 = scrShot_descriptors.data;
     var query_u32 = scrShot_descriptors.buffer.i32; // cast to integer buffer
     var qd_off = 0;
-    var qidx=0,lev=0,pidx=0,k=0;
+    var qidx = 0,
+        lev = 0,
+        pidx = 0,
+        k = 0;
     var num_matches = 0;
 
     for (qidx = 0; qidx < q_cnt; ++qidx) {
@@ -95,8 +116,8 @@ function match_pattern(scrShot_descriptors, patternDescriptors, matches) {
             for (pidx = 0; pidx < ld_cnt; ++pidx) {
                 var curr_d = 0;
                 // our descriptor is 32 bytes so we have 8 Integers
-                for (k=0; k < 8; ++k) {
-                    curr_d += popcnt32( query_u32[qd_off+k]^ld_i32[ld_off+k] );
+                for (k = 0; k < 8; ++k) {
+                    curr_d += popcnt32(query_u32[qd_off + k] ^ ld_i32[ld_off + k]);
                 }
 
                 if (curr_d < best_dist) {
@@ -142,8 +163,14 @@ function find_transform(scrShot_corners, patternCorners, matches, count, homo3x3
         var m = matches[i];
         var s_kp = scrShot_corners[m.screen_idx];
         var p_kp = patternCorners[m.pattern_lev][m.pattern_idx];
-        pattern_xy[i] = {"x":p_kp.x, "y":p_kp.y};
-        screen_xy[i] =  {"x":s_kp.x, "y":s_kp.y};
+        pattern_xy[i] = {
+            "x": p_kp.x,
+            "y": p_kp.y
+        };
+        screen_xy[i] = {
+            "x": s_kp.x,
+            "y": s_kp.y
+        };
     }
 
     // estimate motion
@@ -154,7 +181,7 @@ function find_transform(scrShot_corners, patternCorners, matches, count, homo3x3
     // extract good matches and re-estimate
     var good_cnt = 0;
     if (ok) {
-        for (let i=0; i < count; ++i) {
+        for (let i = 0; i < count; ++i) {
             if (match_mask.data[i]) {
                 pattern_xy[good_cnt].x = pattern_xy[i].x;
                 pattern_xy[good_cnt].y = pattern_xy[i].y;
@@ -171,7 +198,8 @@ function find_transform(scrShot_corners, patternCorners, matches, count, homo3x3
 
     return good_cnt;
 }
-const loadImage = (imageUrl, canvasElement) => {
+
+function loadImage(imageUrl, canvasElement) {
     return new Promise((resolve, reject) => {
         let image = new Image();
         image.crossOrigin = "Anonymous";
@@ -205,7 +233,7 @@ function findOrbFeatures(screenShot) {
         var scrShot_u8 = new jsfeat.matrix_t(image.width, image.height, jsfeat.U8_t | jsfeat.C1_t);
         var scrShot_u8_smooth = new jsfeat.matrix_t(image.width, image.height, jsfeat.U8_t | jsfeat.C1_t);
         var scrCorners = [];
-        var scrDescriptors= new jsfeat.matrix_t(32, 500, jsfeat.U8_t | jsfeat.C1_t);
+        var scrDescriptors = new jsfeat.matrix_t(32, 500, jsfeat.U8_t | jsfeat.C1_t);
 
         jsfeat.imgproc.grayscale(imageData1.data, image.width, image.height, scrShot_u8);
         jsfeat.imgproc.gaussian_blur(scrShot_u8, scrShot_u8_smooth, blurSize);
@@ -243,9 +271,9 @@ function createPatterns(logo) {
             var imageData1 = ctx.getImageData(0, 0, image.width, image.height);
 
             var max_per_level = 150;
-            var sc_pc = 0.1;//Math.sqrt(2.0); // magic number ;)
+            var sc_pc = 0.1; //Math.sqrt(2.0); // magic number ;)
             var lev_corners, lev_descr;
-            var corners_num=0;
+            var corners_num = 0;
             var sc = 1.0;
             var threshold = 10;
             //var strippedPatternCorners = [];
@@ -274,7 +302,10 @@ function createPatterns(logo) {
             jsfeat.imgproc.gaussian_blur(lev0_img, lev_img, blurSize); // this is more robust
             corners_num = jsfeat.fast_corners.detect(lev_img, lev_corners, 3);
             if (corners_num < 30) {
-                throw ({err: "few_corners", corners: corners_num});
+                throw ({
+                    err: "few_corners",
+                    corners: corners_num
+                });
             }
             jsfeat.orb.describe(lev_img, lev_corners, corners_num, lev_descr);
 
@@ -289,8 +320,8 @@ function createPatterns(logo) {
                 lev_corners = patternCorners[lev];
                 lev_descr = patternDescriptors[lev];
 
-                let new_width = (lev0_img.cols*sc)|0;
-                let new_height = (lev0_img.rows*sc)|0;
+                let new_width = (lev0_img.cols * sc) | 0;
+                let new_height = (lev0_img.rows * sc) | 0;
 
                 jsfeat.imgproc.resample(lev0_img, lev_img, new_width, new_height);
                 jsfeat.imgproc.gaussian_blur(lev_img, lev_img, blurSize);
@@ -299,8 +330,8 @@ function createPatterns(logo) {
 
                 // fix the coordinates due to scale level
                 for (let i = 0; i < corners_num; ++i) {
-                    lev_corners[i].x *= 1./sc;
-                    lev_corners[i].y *= 1./sc;
+                    lev_corners[i].x *= 1. / sc;
+                    lev_corners[i].y *= 1. / sc;
                 }
 
                 console.log("train " + lev_img.cols + "x" + lev_img.rows + " points: " + corners_num);
@@ -320,21 +351,27 @@ function matchOrbFeatures(scrCorners, scrDescriptors, patternCorners, patternDes
     //var match_threshold = 48;//increasing this increases the number of points found. hence increases noise.
 
     //data strs for the screenshot
-    var  matches, homo3x3, match_mask;
+    var matches, homo3x3, match_mask;
 
     // transform matrix
-    homo3x3 = new jsfeat.matrix_t(3,3,jsfeat.F32C1_t);
-    match_mask = new jsfeat.matrix_t(500,1,jsfeat.U8C1_t);
+    homo3x3 = new jsfeat.matrix_t(3, 3, jsfeat.F32C1_t);
+    match_mask = new jsfeat.matrix_t(500, 1, jsfeat.U8C1_t);
     matches = [];
     var num_matches = 0;
     var good_matches = 0;
     num_matches = match_pattern(scrDescriptors, patternDescriptors, matches);
     good_matches = find_transform(scrCorners, patternCorners, matches, num_matches, homo3x3, match_mask);
     const ncorners = patternCorners[0].length;
-    let match_ratio = good_matches/ncorners;
+    let match_ratio = good_matches / ncorners;
     // console.log("Corners:" + ncorners + "|Good matches:" + good_matches + "|Match ratio:" + match_ratio);
     if (match_ratio > 0.3) {
-        return ({matches: matches, matchCount: num_matches, mask: match_mask, goodMatches: good_matches, ncorners: ncorners });
+        return ({
+            matches: matches,
+            matchCount: num_matches,
+            mask: match_mask,
+            goodMatches: good_matches,
+            ncorners: ncorners
+        });
     }
     return false;
 }
@@ -348,7 +385,7 @@ function findCorrespondence(scrShot, scrCorners, template, matches, matchCount, 
         let image2 = res[0];
 
         var canvas = document.createElement("canvas");
-        canvas.width = image1.width + image2.width + image1.width/2;
+        canvas.width = image1.width + image2.width + image1.width / 2;
         canvas.height = image2.height;
         var ctx = canvas.getContext("2d");
         ctx.drawImage(image1, 0, 0, image1.width, image1.height);
@@ -361,9 +398,9 @@ function findCorrespondence(scrShot, scrCorners, template, matches, matchCount, 
             if (mask.data[i]) {
                 ctx.strokeStyle = "rgb(0,255,0)";
                 ctx.beginPath();
-                ctx.moveTo(s_kp.x + (image1.width * 1.5),s_kp.y);
+                ctx.moveTo(s_kp.x + (image1.width * 1.5), s_kp.y);
                 ctx.lineTo(p_kp.x, p_kp.y);
-                ctx.lineWidth=1;
+                ctx.lineWidth = 1;
                 ctx.stroke();
 
             } else {

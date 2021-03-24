@@ -1,8 +1,4 @@
 let dbGlobals = {}; // Store all indexedDB related objects in a global object called "dbGlobals".
-dbGlobals.db = null; // The database object will eventually be stored here.
-dbGlobals.name = "TemplateMatching"; // The name of the database.
-dbGlobals.version = 1; // Must be >= 1. Be aware that a database of a given name may only have one version at a time, on the client machine.
-dbGlobals.storeName = "templates"; // The name of the database's object store. Each object in the object store is a file object.
 
 function requiredFeaturesSupported() {
   if (!window.indexedDB) {
@@ -30,6 +26,11 @@ function requiredFeaturesSupported() {
 }
 
 function openDB() {
+  // dbGlobals.db = null; // The database object will eventually be stored here.
+  dbGlobals.name = "TemplateMatching"; // The name of the database.
+  dbGlobals.version = 2; // Must be >= 1. Be aware that a database of a given name may only have one version at a time, on the client machine.
+  dbGlobals.storeName = "templates"; // The name of the database's object store. Each object in the object store is a file object.
+
   if (dbGlobals.db) {
     dbGlobals.db.close(); // If the database is open, you must first close the database connection before deleting it. Otherwise, the delete request waits (possibly forever) for the required close request to occur.
   }
